@@ -1,0 +1,18 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model TranslationLog {
+  id            Int      @id @default(autoincrement())
+  storyId       String
+  targetLocale  String
+  createdAt     DateTime @default(now())
+  job           Json
+  llmResponse   Json
+  storyblokBody Json
+}
